@@ -56,7 +56,7 @@ class EntryPoint
      */
     public static function parse(HttpResponse $response, HttpClientInterface $client)
     {
-        if (substr($response->getHeader('Content-Type'), 0, 20) !== self::$content_type ) {
+        if (mb_substr($response->getHeader('Content-Type'), 0, mb_strlen(self::$content_type)) !== self::$content_type ) {
             throw new \RuntimeException('Invalid content type');
         }
 
